@@ -7,15 +7,17 @@
 (defn move [x y attrs]
   (merge attrs {:style {:translate (str x "px " y "px")}}))
 
-#_ (defn component-dash []
-  (fn []
-  [:div
-   [:div.card
-    [:i.twa.twa-dashing-away.twa-5x]]
-   [:input {:type "range" :min 0 :max 5 :value 0 :step 1
-            :on-change #(reset! v (-> % .-target .-value))}]]))
+(defn component-dash []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.card {:on-click #(reset! on true)}
+        (if @on
+          [:i.twa.twa-dashing-away.twa-5x {:class "juicy__fade"
+                                           :on-animation-end #(reset! on false)}]
+          [:i.twa.twa-grinning-face.twa-5x])]])))
 
-(defn component-set-shake []
+(defn component-shake []
   (let [v (r/atom 0)]
     (fn []
       [:div
@@ -28,7 +30,7 @@
           3 [:i.twa.twa-grimacing-face.twa-5x {:class "juicy__shake__3"}]
           4 [:i.twa.twa-dizzy-face.twa-5x {:class "juicy__shake__4"}])]])))
 
-(defn component-click-bounce []
+(defn component-bounce []
   (let [on (r/atom false)]
     (fn []
       [:div.card
@@ -42,8 +44,9 @@
 
 (defn component-main [state]
   [:div 
-   [component-set-shake]
-   [component-click-bounce]])
+   [component-dash]
+   [component-shake]
+   [component-bounce]])
 
 (defn main []
   (print "hi"))

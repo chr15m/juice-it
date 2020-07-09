@@ -155,3 +155,18 @@
   100% { transform: translate(5px, -10px) rotate(-3deg); }
 }
 
+/*** dash fade ***/
+
+.juicy__fade {
+  animation-name: fade;
+  animation-duration: 1s;
+  transition-timing-function: ease;
+  animation-repeat: 1;
+}
+
+@keyframes fade {
+  0% {opacity: 1; transform: scaleY(0.5); }
+  25% {opacity: 0.5}
+  100% {opacity: 0}
+}
+

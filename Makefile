@@ -3,6 +3,7 @@ STATIC=$(shell find public/ -maxdepth 1 -type f | grep -v .swp)
 build: $(shell find src) public/*
 	mkdir -p build
 	cp $(STATIC) build/
+	npx shadow-cljs release app
 	touch build
 
 node_modules: package.json
