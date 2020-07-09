@@ -1,0 +1,9 @@
+{:source-paths ["src"]
+ :dependencies [[reagent "1.0.0-alpha2"]]
+ :dev-http {8000 "public/"}
+ :builds {:app {:target :browser
+                :output-dir "public/js"
+                :asset-path "js"
+                :devtools {:browser-inject :main
+                           :preloads [shadow.remote.runtime.cljs.browser]}
+                :modules {:main {:init-fn app.core/main}}}}}
