@@ -6,4 +6,5 @@
                 :asset-path "js"
                 :devtools {:browser-inject :main
                            :preloads [shadow.remote.runtime.cljs.browser]}
-                :modules {:main {:init-fn app.core/main}}}}}
+                :modules {:main {:init-fn app.core/main}}
+                :release {:output-dir "build/js"}}}}

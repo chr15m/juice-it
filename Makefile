@@ -1,4 +1,9 @@
-# dev targets
+STATIC=$(shell find public/ -maxdepth 1 -type f | grep -v .swp)
+
+build: $(shell find src) public/*
+	mkdir -p build
+	cp $(STATIC) build/
+	touch build
 
 node_modules: package.json
 	npm i
