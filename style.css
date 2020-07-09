@@ -9,14 +9,19 @@ html, body, #app, #loading {
 }
 
 .card {
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 270px;
+  max-width: 100%;
   background-color: #214251;
-  margin: auto;
+  margin: 1em auto;
 }
 
 .card > * {
   position: absolute;
+}
+
+input[type="range"] {
+  width: 100%;
 }
 
 #loading i {
