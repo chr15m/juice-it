@@ -1,0 +1,72 @@
+/* some animations nicked from
+ * https://github.com/animate-css/animate.css
+ */
+@keyframes bounce {
+  from,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  30%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+@keyframes shadow-bounce {
+  from,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: scale(1);
+  }
+
+  30%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: scale(0.5);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: scale(0.7);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: scaleY(0.8);
+  }
+
+  90% {
+    transform: scaleY(0.9);
+  }
+}
+.animate__animated {
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-repeat: 1;
+}
+.animate__bounce {
+  animation-name: bounce;
+  transform-origin: center bottom;
+}
+.animate__shadow__bounce {
+  animation-name: shadow-bounce;
+  transform-origin: center center;
+}

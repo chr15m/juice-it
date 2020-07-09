@@ -2,10 +2,21 @@ html, body, #app, #loading {
   height: 100%;
 }
 
-#loading {
+#loading, .card {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card {
+  width: 500px;
+  height: 500px;
+  background-color: #214251;
+  margin: auto;
+}
+
+.card > * {
+  position: absolute;
 }
 
 #loading i {
@@ -18,3 +29,6 @@ html, body, #app, #loading {
     100% {transform:rotate(360deg);}
 }
 
+.shadow {
+  float: left;
+}
