@@ -7,6 +7,17 @@
 (defn move [x y attrs]
   (merge attrs {:style {:translate (str x "px " y "px")}}))
 
+(defn component-screenshake []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.card {:on-click #(reset! on true)
+                   :class (when @on "juicy__screenshake")
+                   :on-animation-end #(reset! on false)}
+        (if @on
+          [:i.twa.twa-grimacing-face.twa-5x]
+          [:i.twa.twa-grinning-face.twa-5x])]])))
+
 (defn component-dash []
   (let [on (r/atom false)]
     (fn []
@@ -44,6 +55,7 @@
 
 (defn component-main [state]
   [:div 
+   [component-screenshake]
    [component-dash]
    [component-shake]
    [component-bounce]])
