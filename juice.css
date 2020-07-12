@@ -128,31 +128,31 @@
 }
 
 @keyframes shake-3 {
-  0% { transform: translate(3px, 3px) rotate(0deg); }
-  10% { transform: translate(-3px, -6px) rotate(-3deg); }
-  20% { transform: translate(-9px, 0px) rotate(3deg); }
-  30% { transform: translate(9px, 6px) rotate(0deg); }
-  40% { transform: translate(3px, -3px) rotate(3deg); }
-  50% { transform: translate(-3px, 6px) rotate(-3deg); }
-  60% { transform: translate(-9px, 3px) rotate(0deg); }
-  70% { transform: translate(9px, 3px) rotate(-3deg); }
-  80% { transform: translate(-3px, -3px) rotate(3deg); }
-  90% { transform: translate(3px, 6px) rotate(0deg); }
-  100% { transform: translate(3px, -6px) rotate(-3deg); }
+  0% { transform: translate(4px, 4px) rotate(0deg); }
+  10% { transform: translate(-4px, -8px) rotate(-3deg); }
+  20% { transform: translate(-12px, 0px) rotate(3deg); }
+  30% { transform: translate(12px, 8px) rotate(0deg); }
+  40% { transform: translate(4px, -4px) rotate(3deg); }
+  50% { transform: translate(-4px, 8px) rotate(-3deg); }
+  60% { transform: translate(-12px, 4px) rotate(0deg); }
+  70% { transform: translate(12px, 4px) rotate(-3deg); }
+  80% { transform: translate(-4px, -4px) rotate(3deg); }
+  90% { transform: translate(4px, 8px) rotate(0deg); }
+  100% { transform: translate(4px, -8px) rotate(-3deg); }
 }
 
 @keyframes shake-4 {
-  0% { transform: translate(5px, 5px) rotate(0deg); }
-  10% { transform: translate(-5px, -10px) rotate(-3deg); }
-  20% { transform: translate(-15px, 0px) rotate(3deg); }
-  30% { transform: translate(15px, 10px) rotate(0deg); }
-  40% { transform: translate(5px, -5px) rotate(3deg); }
-  50% { transform: translate(-5px, 10px) rotate(-3deg); }
-  60% { transform: translate(-15px, 5px) rotate(0deg); }
-  70% { transform: translate(15px, 5px) rotate(-3deg); }
-  80% { transform: translate(-5px, -5px) rotate(3deg); }
-  90% { transform: translate(5px, 10px) rotate(0deg); }
-  100% { transform: translate(5px, -10px) rotate(-3deg); }
+  0% { transform: translate(8px, 8px) rotate(0deg); }
+  10% { transform: translate(-8px, -16px) rotate(-3deg); }
+  20% { transform: translate(-24px, 0px) rotate(3deg); }
+  30% { transform: translate(24px, 16px) rotate(0deg); }
+  40% { transform: translate(8px, -8px) rotate(3deg); }
+  50% { transform: translate(-8px, 16px) rotate(-3deg); }
+  60% { transform: translate(-24px, 8px) rotate(0deg); }
+  70% { transform: translate(24px, 8px) rotate(-3deg); }
+  80% { transform: translate(-8px, -8px) rotate(3deg); }
+  90% { transform: translate(8px, 16px) rotate(0deg); }
+  100% { transform: translate(8px, -16px) rotate(-3deg); }
 }
 
 /*** dash fade ***/
@@ -160,13 +160,74 @@
 .juicy__fade {
   animation-name: fade;
   animation-duration: 1s;
-  transition-timing-function: ease;
+  transition-timing-function: ease-in;
   animation-repeat: 1;
 }
 
 @keyframes fade {
-  0% {opacity: 1; transform: scaleY(0.5); }
-  25% {opacity: 0.5}
-  100% {opacity: 0}
+  0% {opacity: 1; transform: scaleY(0.1) rotate(2deg); }
+  25% {opacity: 0.5; transform: rotate(-2deg); }
+  100% {opacity: 0; transform: rotate(0deg); }
 }
 
+.juicy__zipright {
+  transform: scaleY(0.5) rotate(45deg);
+  animation-name: zipright;
+  animation-duration: 1s;
+  transition-timing-function: linear;
+  animation-repeat: 1;
+}
+
+@keyframes zipright {
+  to {
+    transform: translateX(10000px);
+  }
+}
+
+/*** screen shake ***/
+
+.juicy__screenshake {
+  animation-name: screenshake, screenshake_bright;
+  animation-duration: 1s;
+  transition-timing-function: ease-out;
+  animation-repeat: 1;
+}
+
+@keyframes screenshake {
+  0% { transform: translate(8px, 8px) rotate(0deg); }
+  2% { transform: translate(-8px, -16px) rotate(-3deg); }
+  4% { transform: translate(-24px, 0px) rotate(3deg); }
+  6% { transform: translate(24px, 16px) rotate(0deg); }
+  8% { transform: translate(8px, -8px) rotate(3deg); }
+  10% { transform: translate(-8px, 16px) rotate(-3deg); }
+  12% { transform: translate(-24px, 8px) rotate(0deg); }
+  14% { transform: translate(24px, 8px) rotate(-3deg); }
+  16% { transform: translate(-8px, -8px) rotate(3deg); }
+  18% { transform: translate(8px, 16px) rotate(-3deg); }
+  20% { transform: translate(0px, 0px) rotate(0deg); }
+  25% { transform: translate(4px, 4px) rotate(0deg); }
+  30% { transform: translate(-4px, -8px) rotate(-3deg); }
+  35% { transform: translate(-12px, 0px) rotate(3deg); }
+  40% { transform: translate(12px, 8px) rotate(0deg); }
+  45% { transform: translate(4px, -4px) rotate(3deg); }
+  50% { transform: translate(-4px, 8px) rotate(-3deg); }
+  55% { transform: translate(-12px, 4px) rotate(0deg); }
+  60% { transform: translate(12px, 4px) rotate(-3deg); }
+  65% { transform: translate(2px, 2px) rotate(0deg); }
+  70% { transform: translate(-2px, -4px) rotate(-3deg); }
+  75% { transform: translate(-6px, 0px) rotate(3deg); }
+  80% { transform: translate(6px, 4px) rotate(0deg); }
+  85% { transform: translate(3px, 1px) rotate(-3deg); }
+  90% { transform: translate(-1px, -1px) rotate(3deg); }
+  95% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-3deg); }
+}
+
+@keyframes screenshake_bright {
+  0% {
+    background-color: white;
+  }, 
+  50% {
+    background-color: none;
+  }
+}
