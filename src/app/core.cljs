@@ -23,10 +23,10 @@
     (fn []
       [:div
        [:div.card {:on-click #(reset! on true)}
-        (if @on
+        [:i.twa.twa-grinning-face.twa-5x (when @on {:class "juicy__zipright"})]
+        (when @on
           [:i.twa.twa-dashing-away.twa-5x {:class "juicy__fade"
-                                           :on-animation-end #(reset! on false)}]
-          [:i.twa.twa-grinning-face.twa-5x])]])))
+                                           :on-animation-end #(reset! on false)}])]])))
 
 (defn component-shake []
   (let [v (r/atom 0)]

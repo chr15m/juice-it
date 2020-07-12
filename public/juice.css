@@ -160,14 +160,27 @@
 .juicy__fade {
   animation-name: fade;
   animation-duration: 1s;
-  transition-timing-function: ease;
+  transition-timing-function: ease-in;
   animation-repeat: 1;
 }
 
 @keyframes fade {
-  0% {opacity: 1; transform: scaleY(0.5); }
-  25% {opacity: 0.5}
-  100% {opacity: 0}
+  0% {opacity: 1; transform: scaleY(0.1) rotate(2deg); }
+  25% {opacity: 0.5; transform: rotate(-2deg); }
+  100% {opacity: 0; transform: rotate(0deg); }
+}
+
+.juicy__zipright {
+  animation-name: zipright;
+  animation-duration: 1s;
+  transition-timing-function: linear;
+  animation-repeat: 1;
+}
+
+@keyframes zipright {
+  to {
+    transform: translateX(10000px);
+  }
 }
 
 /*** screen shake ***/
