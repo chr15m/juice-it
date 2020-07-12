@@ -4,8 +4,8 @@
 
 (defonce state (r/atom {}))
 
-(defn move [x y attrs]
-  (merge attrs {:style {:translate (str x "px " y "px")}}))
+(defn move [x y & [attrs]]
+  (merge (or attrs {}) {:style {:translate (str x "px " y "px")}}))
 
 (defn component-screenshake []
   (let [on (r/atom false)]
@@ -15,8 +15,12 @@
                    :class (when @on "juicy__screenshake")
                    :on-animation-end #(reset! on false)}
         (if @on
-          [:i.twa.twa-grimacing-face.twa-5x]
-          [:i.twa.twa-grinning-face.twa-5x])]])))
+          [:span
+           [:i.twa.twa-grimacing-face.twa-5x (move -50 0)]
+           [:i.twa.twa-grimacing-face.twa-5x (move 50 0)]]
+          [:span
+           [:i.twa.twa-grinning-face.twa-5x (move -50 0)]
+           [:i.twa.twa-grinning-face-with-smiling-eyes.twa-5x (move 50 0)]])]])))
 
 (defn component-dash []
   (let [on (r/atom false)]
