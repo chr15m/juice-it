@@ -171,6 +171,7 @@
 }
 
 .juicy__zipright {
+  transform: scaleY(0.5) rotate(45deg);
   animation-name: zipright;
   animation-duration: 1s;
   transition-timing-function: linear;
