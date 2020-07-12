@@ -226,8 +226,45 @@
 @keyframes screenshake_bright {
   0% {
     background-color: white;
-  }, 
+  }
+}
+
+/*** bubbleup ***/
+
+.juicy__bubbleup {
+  opacity: 0;
+  animation-name: bubbleup;
+  animation-duration: 1s;
+  transition-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-repeat: 1;
+}
+
+.juicy__bubbleup-1 {
+  transform: translateY(300px) rotate(30deg);
+}
+
+.juicy__bubbleup-2 {
+  transform: translateY(300px) rotate(-30deg);
+}
+
+.juicy__bubbleup-3 {
+  transform: translateY(300px) rotate(60deg);
+}
+
+.juicy__bubbleup-4 {
+  transform: translateY(300px) rotate(-60deg);
+}
+
+@keyframes bubbleup {
+  0% {
+    opacity: 0.0;
+  }
   50% {
-    background-color: none;
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1.0;
+    transform: translateY(0px) rotate(0deg);
   }
 }
