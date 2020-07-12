@@ -5,7 +5,22 @@
 (defonce state (r/atom {}))
 
 (defn move [x y & [attrs]]
-  (merge (or attrs {}) {:style {:translate (str x "px " y "px")}}))
+  (assoc-in (or attrs {})
+            [:style :translate]
+            (str x "px " y "px")))
+
+(defn component-float-tiles []
+  (let [on (r/atom false)]
+    (fn []
+      [:div.card {:on-click #(swap! on not)}
+       (when @on
+         (for [x (range 3)
+               y (range 2)]
+           [:i.twa.twa-white-large-square.twa-5x.juicy__bubbleup
+            (move (- (* x 100) 100) (- (* y 100) 50)
+                  {:key [x y]
+                   :class (str "juicy__bubbleup-" (inc (js/Math.floor (* (js/Math.random) 4))))
+                   :style {:animation-delay (str (int (* (js/Math.random) 500)) "ms")}})]))])))
 
 (defn component-screenshake []
   (let [on (r/atom false)]
@@ -56,6 +71,7 @@
 
 (defn component-main [state]
   [:div 
+   [component-float-tiles]
    [component-screenshake]
    [component-dash]
    [component-shake]
