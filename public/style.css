@@ -21,6 +21,16 @@ html, body, #app, #loading {
   position: absolute;
 }
 
+.title {
+  max-width: 100%;
+  margin: 0px auto;
+  padding: 0px 0.5em;
+  width: 480px;
+  position: relative;
+  top: 3em;
+  color: white;
+}
+
 input[type="range"] {
   width: 100%;
 }
