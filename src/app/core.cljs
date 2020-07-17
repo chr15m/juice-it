@@ -9,6 +9,23 @@
             [:style :transform]
             (str "translate(" x "px," y "px)")))
 
+(defn component-particles []
+  (let [p (r/atom [])
+        q 20]
+    (fn []
+      [:div
+       [:div.title "Particles" (when (not-empty @p) (str " (" (count @p) ")"))]
+       [:div.card
+        {:on-click
+         #(swap! p concat (for [x (range q)] {:key (js/Math.random)
+                                 :style {"--particle-big" (+ (* (js/Math.random) 2) 0.5)
+                                         "--particle-direction" (* (- (js/Math.random) 0.5) 2)
+                                         :animation-delay (str (* (js/Math.random) 0.5) "s")}}))}
+        (for [i @p]
+          [:div.juicy__particle
+           (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
+           [:i.twa.twa-collision.twa-2x]])]])))
+
 (defn component-float-tiles []
   (let [on (r/atom false)]
     (fn []
@@ -92,6 +109,7 @@
 
 (defn component-main [state]
   [:div 
+   [component-particles]  
    [component-float-tiles]
    [component-screenshake]
    [component-dash]
