@@ -1,6 +1,12 @@
 html, body, #app, #loading {
   height: 100%;
   font-size: 16px !important;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 #loading, .card, .card * {
