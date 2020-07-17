@@ -9,6 +9,15 @@
             [:style :transform]
             (str "translate(" x "px," y "px)")))
 
+(defn make-particle-attributes [n]
+  (for [x (range n)]
+    {:key (js/Math.random)
+     :style {"--particle-jump" (+ (* (js/Math.random) 2) 0.5)
+             "--particle-direction" (* (- (js/Math.random) 0.5) 2)
+             "--particle-spin" (- (js/Math.random) 0.5)
+             "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
+             :animation-delay (str (* (js/Math.random) 0.5) "s")}}))
+
 (defn component-particles []
   (let [p (r/atom [])
         q 20]
@@ -17,18 +26,12 @@
        [:div.title "Particles" (when (not-empty @p) (str " (" (count @p) ")"))]
        [:div.card
         {:on-click
-         #(swap! p concat (for [x (range q)] {:key (js/Math.random)
-                                              :style {"--particle-jump" (+ (* (js/Math.random) 2) 0.5)
-                                                      "--particle-direction" (* (- (js/Math.random) 0.5) 2)
-                                                      "--particle-spin" (- (js/Math.random) 0.5)
-                                                      "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
-                                                      :animation-delay (str (* (js/Math.random) 0.5) "s")}}))}
-
-
-        (for [i @p]
-          [:div.juicy__particle
-           (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
-           [:i.twa.twa-star.twa-5x]])
+         #(swap! p concat (make-particle-attributes q))}
+        [:div (move -18 -10)
+         (for [i @p]
+           [:div.juicy__particle
+            (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
+            [:i.twa.twa-star.twa-5x]])]
         [:i.twa.twa-man-mage-dark-skin-tone.twa-3x]]])))
 
 (defn component-float-tiles []
