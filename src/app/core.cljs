@@ -41,7 +41,7 @@
          (when @on
            (for [x (range 3)
                  y (range 2)]
-             [:div (move (- (* x 100) 100) (- (* y 100) 50))
+             [:div (move (- (* x 100) 100) (- (* y 100) 50) {:key [x y]})
               [:i.twa.twa-white-large-square.twa-5x.juicy__bubbleup
                {:key [x y]
                 :class (str "juicy__bubbleup-" (inc (js/Math.floor (* (js/Math.random) 4))))
