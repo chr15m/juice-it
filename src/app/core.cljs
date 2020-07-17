@@ -18,13 +18,18 @@
        [:div.card
         {:on-click
          #(swap! p concat (for [x (range q)] {:key (js/Math.random)
-                                 :style {"--particle-big" (+ (* (js/Math.random) 2) 0.5)
-                                         "--particle-direction" (* (- (js/Math.random) 0.5) 2)
-                                         :animation-delay (str (* (js/Math.random) 0.5) "s")}}))}
+                                              :style {"--particle-jump" (+ (* (js/Math.random) 2) 0.5)
+                                                      "--particle-direction" (* (- (js/Math.random) 0.5) 2)
+                                                      "--particle-spin" (- (js/Math.random) 0.5)
+                                                      "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
+                                                      :animation-delay (str (* (js/Math.random) 0.5) "s")}}))}
+
+
         (for [i @p]
           [:div.juicy__particle
            (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
-           [:i.twa.twa-collision.twa-2x]])]])))
+           [:i.twa.twa-star.twa-5x]])
+        [:i.twa.twa-man-mage-dark-skin-tone.twa-3x]]])))
 
 (defn component-float-tiles []
   (let [on (r/atom false)]
