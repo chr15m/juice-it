@@ -106,9 +106,9 @@
         {:on-click #(reset! on true)}
         [:svg.shadow (move 0 43 {:width 100 :height 100})
          [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5
-                    :class (when @on "juicy juicy__shadow__bounce")}]]
+                    :class (when @on "juicy__bounce__shadow")}]]
         (if @on
-          [:i.twa.twa-zany-face.twa-5x {:class "juicy juicy__bounce"
+          [:i.twa.twa-zany-face.twa-5x {:class "juicy__bounce"
                                         :on-animation-end #(reset! on false)}]     
           [:i.twa.twa-grinning-face.twa-5x])]])))
 

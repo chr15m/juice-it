@@ -8,22 +8,19 @@
 
 /*** bounce ***/
 
-.juicy {
+.juicy__bounce {
   animation-duration: 1s;
   animation-delay: 0s;
   animation-repeat: 1;
-}
-.juicy__bounce {
   animation-name: bounce;
   transform-origin: center bottom;
 }
-.juicy__shadow__bounce {
-  animation-name: shadow-bounce;
+.juicy__bounce__shadow {
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-repeat: 1;
+  animation-name: bounce-shadow;
   transform-origin: center center;
-}
-.juicy__slide__bounce {
-  animation-name: bounce, bounce-slide;
-  transform-origin: center bottom;
 }
 
 @keyframes bounce {
@@ -54,18 +51,8 @@
     transform: translateY(-4px) scaleY(1.02);
   }
 }
-@keyframes bounce-slide {
-  from {
-    animation-timing-function: linear;
-    margin-left: 0px;
-  }
-  to {
-    animation-timing-function: linear;
-    margin-left: 200px;
-  }
-}
 
-@keyframes shadow-bounce {
+@keyframes bounce-shadow {
   from,
   53%,
   to {
