@@ -313,24 +313,25 @@
 /*** particle ***/
 
 :root {
-  --particle-big: 0.25;
+  --particle-jump: 0.25;
   --particle-direction: 1;
+  --particle-spin: 0;
+  --particle-size: 1;
 }
 
 .juicy__particle {
-  animation-duration: calc(0.5s * var(--particle-big));
+  animation-duration: calc(0.5s * var(--particle-jump));
   animation-delay: 0s;
   animation-repeat: 1;
   animation-name: particle-horizontal;
   transform-origin: center center;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  transform: scale(0.1);
   opacity: 0;
 }
 
 .juicy__particle > * {
-  animation-duration: calc(0.5s * var(--particle-big));
+  animation-duration: calc(0.5s * var(--particle-jump) + 0.2s);
   animation-delay: 0s;
   animation-repeat: 1;
   animation-name: particle;
@@ -340,15 +341,15 @@
 
 @keyframes particle {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg) scale(calc(0.25 * var(--particle-size)));
     animation-timing-function: ease-out;
   }
   50% {
-    transform: translateY(calc(-50px * var(--particle-big)));
+    transform: translateY(calc(-50px * var(--particle-jump))) rotate(calc(180deg * var(--particle-spin))) scale(calc(0.25 * var(--particle-size)));
     animation-timing-function: ease-in;
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(calc(360deg * var(--particle-spin))) scale(calc(0.25 * var(--particle-size)));
   }
 }
 
@@ -358,12 +359,12 @@
     transform: translateX(0px);
   }
   50% {
-    opacity: 0.5;
-    transform: translateX(calc(50px * var(--particle-big) * var(--particle-direction)));
+    opacity: 1.0;
+    transform: translateX(calc(50px * var(--particle-jump) * var(--particle-direction)));
   }
   100% {
     opacity: 0.0;
-    transform: translateX(calc(100px * var(--particle-big) * var(--particle-direction)));
+    transform: translateX(calc(100px * var(--particle-jump) * var(--particle-direction)));
   }
 }
 
