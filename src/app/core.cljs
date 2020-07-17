@@ -42,6 +42,25 @@
              "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
              :animation-delay (str (* (js/Math.random) 0.5) "s")}}))
 
+(defn component-bounce-tiles []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.title "Bounce tiles"]
+       [:div.card {:on-click (fn [ev]
+                               (swap! on not)
+                               (js/setTimeout
+                                 #(reset! on false)
+                                 1200))}
+        [:span {:style {:transform "scaleY(0.66)"}}
+         (doall
+         (for [x (range 3)
+                 y (range 3)]
+             [:div (move (- (* x 100) 100) (- (* y 100) 100) {:key [x y]})
+              [:i.twa.twa-white-large-square.twa-5x
+               {:class (when @on "juicy__bounce")
+                :style {:animation-delay (str (int (* (js/Math.random) 150)) "ms")}}]]))]]])))
+
 (defn component-attack []
   (let [on (r/atom false)
         p (r/atom [])]
@@ -88,8 +107,7 @@
                  y (range 2)]
              [:div (move (- (* x 100) 100) (- (* y 100) 50) {:key [x y]})
               [:i.twa.twa-white-large-square.twa-5x.juicy__bubbleup
-               {:key [x y]
-                :class (str "juicy__bubbleup-" (inc (js/Math.floor (* (js/Math.random) 4))))
+               {:class (str "juicy__bubbleup-" (inc (js/Math.floor (* (js/Math.random) 4))))
                 :style {:animation-delay (str (int (* (js/Math.random) 500)) "ms")}}]]))]]])))
 
 (defn component-screenshake []
@@ -168,6 +186,7 @@
                          :class (str "twa-" p)
                          :ref (partial preload-twa-emoji preloads p)}])]
       [:div
+       [component-bounce-tiles]
        [component-attack]
        [component-particles]
        [component-float-tiles]
