@@ -18,6 +18,24 @@
              "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
              :animation-delay (str (* (js/Math.random) 0.5) "s")}}))
 
+(defn component-attack []
+  (let [on (r/atom false)
+        p (r/atom [])]
+    (fn []
+      [:div
+       [:div.title "Attack"]
+       [:div.card {:on-click (fn [ev]
+                               (swap! on not)
+                               (js/setTimeout #(swap! p concat (make-particle-attributes 10)) 300)
+                               (js/setTimeout #(swap! on not) 1500))}
+        [:div (move 20 10)
+         (for [i @p]
+           [:div.juicy__particle
+            (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
+            [:i.twa.twa-collision.twa-5x]])]
+        [:div (move -50 0) [:i.twa.twa-elf-dark-skin-tone.twa-5x {:class (when @on "juicy__attack-initiate")}]]
+        [:div (move 50 0) [:i.twa.twa-deer.twa-5x {:class (when @on "juicy__attack-receive")}]]]])))
+
 (defn component-particles []
   (let [p (r/atom [])
         q 20]
@@ -116,7 +134,8 @@
           [:i.twa.twa-grinning-face.twa-5x])]])))
 
 (defn component-main [state]
-  [:div 
+  [:div
+   [component-attack]
    [component-particles]  
    [component-float-tiles]
    [component-screenshake]

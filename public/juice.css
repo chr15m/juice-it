@@ -355,3 +355,60 @@
   }
 }
 
+/*** attack ***/
+
+.juicy__attack-initiate {
+  animation-duration: 1.5s;
+  animation-repeat: 1;
+  animation-name: attack-initiate;
+  transform-origin: center bottom;
+}
+
+.juicy__attack-receive {
+  animation-duration: 1.5s;
+  animation-repeat: 1;
+  animation-name: attack-receive;
+  transform-origin: center bottom;
+}
+
+@keyframes attack-initiate {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(-5px) translateY(-5px) rotate(-33deg);
+  }
+  30% {
+    transform: translateX(20px) translateY(-25px) rotate(45deg);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes attack-receive {
+  30% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(20px) translateY(-5px) rotate(40deg);
+  }
+  60% {
+    transform: translateX(20px) translateY(0px) rotate(45deg);
+  }
+  70% {
+    transform: translateX(25px) translateY(-5px) rotate(45deg);
+  }
+  75% {
+    transform: translateX(30px) translateY(0px) rotate(20deg);
+  }
+  80% {
+    transform: translateX(20px) translateY(-5px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
