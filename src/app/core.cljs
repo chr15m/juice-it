@@ -2,7 +2,31 @@
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]))
 
-(defonce state (r/atom {}))
+(defonce state
+  (r/atom
+    {:preloads ["elf-dark-skin-tone"
+                "deer"
+                "collision"
+                "star"
+                "man-mage-dark-skin-tone"
+                "white-large-square"
+                "grimacing-face"
+                "grinning-face"
+                "dashing-away"
+                "grinning-face-with-sweat"
+                "zany-face"
+                "dizzy-face"]}))
+
+(defn preload-twa-emoji [preloads p el]
+  (when el
+    (let [url (-> el
+                  (js/window.getComputedStyle)
+                  (aget "background-image")
+                  (.replace "url(\"" "")
+                  (.replace "\")" ""))
+          i (js/Image.)]
+      (aset i "onload" #(swap! preloads (fn [ps] (remove (partial = p) ps))))
+      (aset i "src" url))))
 
 (defn move [x y & [attrs]]
   (assoc-in (or attrs {})
@@ -134,17 +158,28 @@
           [:i.twa.twa-grinning-face.twa-5x])]])))
 
 (defn component-main [state]
-  [:div
-   [component-attack]
-   [component-particles]  
-   [component-float-tiles]
-   [component-screenshake]
-   [component-dash]
-   [component-shake]
-   [component-bounce]])
+  (let [preloads (r/cursor state [:preloads])]
+    (if (not-empty @preloads)
+      [:div
+       [:div#loading [:i.twa.twa-skull-and-crossbones.twa-4x]]
+       (for [p @preloads]
+         [:i.twa.twa-5x {:key p
+                         ;:style {:opacity 0}
+                         :class (str "twa-" p)
+                         :ref (partial preload-twa-emoji preloads p)}])]
+      [:div
+       [component-attack]
+       [component-particles]
+       [component-float-tiles]
+       [component-screenshake]
+       [component-dash]
+       [component-shake]
+       [component-bounce]])))
 
 (defn main []
   (print "hi"))
 
-(rdom/render [component-main state]
-             (js/document.getElementById "app"))
+(js/setTimeout
+  #(rdom/render [component-main state]
+                (js/document.getElementById "app"))
+  500)
