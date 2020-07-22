@@ -412,3 +412,40 @@
     transform: translateX(0px);
   }
 }
+
+/*** smokepuff ***/
+
+:root {
+  --smoke-duration-scale: 1.0;
+  --smoke-height-scale: 1.0;
+  --smoke-size-scale: 1.0;
+  --smoke-width-scale: 1.0;
+  --smoke-delay: 0;
+}
+
+.juicy__smokepuff {
+  animation-duration: calc(3s * var(--smoke-duration-scale));
+  animation-delay: calc(3s * var(--smoke-delay));
+  animation-iteration-count: infinite;
+  animation-name: smokepuff-rise;
+  transform-origin: center bottom;
+}
+
+.juicy__smokepuff > * {
+  animation-duration: calc(3s * var(--smoke-duration-scale));
+  animation-delay: calc(3s * var(--smoke-delay));
+  animation-iteration-count: infinite;
+  animation-name: smokepuff;
+  transition-timing-function: linear;
+}
+
+@keyframes smokepuff {
+  0% { opacity: 0; transition-timing-function: ease-out; transform: translateX(0px) scale(0); }
+  50% { opacity: 1; transition-timing-function: ease-in; transform: translateX(calc(-50px * var(--smoke-width-scale))) scale(var(--smoke-size-scale)); }
+  100% { opacity: 0; transform: translateX(calc(-30px * var(--smoke-width-scale))) scale(cal(0.25 * var(--smoke-size-scale))); }
+}
+
+@keyframes smokepuff-rise {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100px * var(--smoke-height-scale))); }
+}

@@ -4,10 +4,12 @@
 
 (defonce state
   (r/atom
-    {:preloads ["elf-dark-skin-tone"
+    {:preloads ["cloud"
+                "elf-dark-skin-tone"
                 "deer"
                 "collision"
                 "star"
+                "fire"
                 "man-mage-dark-skin-tone"
                 "white-large-square"
                 "grimacing-face"
@@ -16,6 +18,10 @@
                 "grinning-face-with-sweat"
                 "zany-face"
                 "dizzy-face"]}))
+
+; cloud bob
+; bubble wobble
+; smoke
 
 (defn preload-twa-emoji [preloads p el]
   (when el
@@ -41,6 +47,22 @@
              "--particle-spin" (- (js/Math.random) 0.5)
              "--particle-size" (+ (* (js/Math.random) 0.5) 1.0)
              :animation-delay (str (* (js/Math.random) 0.5) "s")}}))
+
+;*** animation cards ***;
+
+(defn component-smoke []
+  [:div
+   [:div.title "Smoke"]
+   [:div.card
+    (for [s (range 10)]
+      [:div.juicy__smokepuff {:style
+                              {"--smoke-duration-scale" (+ (js/Math.random) 0.5)
+                               "--smoke-height-scale" (+ (js/Math.random) 0.5)
+                               "--smoke-size-scale" (+ (js/Math.random) 0.5)
+                               "--smoke-width-scale" (* (- (js/Math.random) 0.5) 2)
+                               "--smoke-delay" (js/Math.random)}}
+       [:i.twa.twa-cloud.twa-3x]])
+    [:i.twa.twa-fire.twa-5x]]])
 
 (defn component-bounce-tiles []
   (let [on (r/atom false)]
@@ -175,6 +197,8 @@
                                         :on-animation-end #(reset! on false)}]     
           [:i.twa.twa-grinning-face.twa-5x])]])))
 
+;*** main ***;
+
 (defn component-main [state]
   (let [preloads (r/cursor state [:preloads])]
     (if (not-empty @preloads)
@@ -186,6 +210,7 @@
                          :class (str "twa-" p)
                          :ref (partial preload-twa-emoji preloads p)}])]
       [:div
+       [component-smoke]
        [component-bounce-tiles]
        [component-attack]
        [component-particles]
