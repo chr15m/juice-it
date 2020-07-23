@@ -449,3 +449,42 @@
   0% { transform: translateY(0); }
   100% { transform: translateY(calc(-100px * var(--smoke-height-scale))); }
 }
+
+/*** bubble ***/
+
+:root {
+  --bubble-height-scale: 1.0;
+  --bubble-width-scale: 0.0;
+  --bubble-size-scale: 0.5;
+  --bubble-delay: 0;
+}
+
+.juicy__bubble {
+  opacity: 0;
+  animation-duration: calc((var(--bubble-size-scale) + 2) * 2s);
+  animation-delay: calc(1s * var(--bubble-delay));
+  animation-iteration-count: infinite;
+  animation-name: bubble-rise;
+  transform-origin: center center;
+  animation-timing-function: linear;
+}
+
+.juicy__bubble > * {
+  animation-duration: calc(var(--bubble-size-scale) * 0.5s);
+  animation-delay: calc(1s * var(--bubble-delay));
+  animation-iteration-count: infinite;
+  animation-name: bubble-wobble;
+  transform-origin: center center;
+}
+
+@keyframes bubble-rise {
+  0% { opacity: 0.5; transform: scale(calc(1 * var(--bubble-size-scale))); }
+  100% { opacity: 0.5; transform: translate(calc(-50px * var(--bubble-width-scale)), calc(-100px * var(--bubble-height-scale))) scale(calc(1 * var(--bubble-size-scale))); }
+}
+
+@keyframes bubble-wobble {
+  0% { transform: scale(1.0, 1.1); }
+  50% { transform: scale(1.1, 1.0); }
+  100% { transform: scale(1.0, 1.1); }
+}
+

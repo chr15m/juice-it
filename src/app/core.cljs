@@ -10,6 +10,7 @@
                 "collision"
                 "star"
                 "fire"
+                "blue-circle"
                 "man-mage-dark-skin-tone"
                 "white-large-square"
                 "grimacing-face"
@@ -18,10 +19,6 @@
                 "grinning-face-with-sweat"
                 "zany-face"
                 "dizzy-face"]}))
-
-; cloud bob
-; bubble wobble
-; smoke
 
 (defn preload-twa-emoji [preloads p el]
   (when el
@@ -50,12 +47,27 @@
 
 ;*** animation cards ***;
 
+(defn component-bubble []
+  [:div
+   [:div.title "Bubbles"]
+   [:div.card
+    (for [s (range 5)]
+      [:div (move (* (- (js/Math.random) 0.5) 200) 0 {:key s})
+       [:div.juicy__bubble
+        {:style
+         {"--bubble-height-scale" (+ (js/Math.random) 0.5)
+          "--bubble-size-scale" (+ (js/Math.random) 0.5)
+          "--bubble-width-scale" (* (- (js/Math.random) 0.5) 2)
+          "--bubble-delay" (* (js/Math.random) 4.0)}}
+        [:i.twa.twa-blue-circle.twa-2x]]])]])
+
 (defn component-smoke []
   [:div
    [:div.title "Smoke"]
    [:div.card
     (for [s (range 10)]
-      [:div.juicy__smokepuff {:style
+      [:div.juicy__smokepuff {:key s
+                              :style
                               {"--smoke-duration-scale" (+ (js/Math.random) 0.5)
                                "--smoke-height-scale" (+ (js/Math.random) 0.5)
                                "--smoke-size-scale" (+ (js/Math.random) 0.5)
@@ -210,6 +222,7 @@
                          :class (str "twa-" p)
                          :ref (partial preload-twa-emoji preloads p)}])]
       [:div
+       [component-bubble]
        [component-smoke]
        [component-bounce-tiles]
        [component-attack]
