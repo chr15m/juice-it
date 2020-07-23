@@ -48,18 +48,22 @@
 ;*** animation cards ***;
 
 (defn component-bubble []
-  [:div
-   [:div.title "Bubbles"]
-   [:div.card
-    (for [s (range 5)]
-      [:div (move (* (- (js/Math.random) 0.5) 200) 0 {:key s})
-       [:div.juicy__bubble
-        {:style
-         {"--bubble-height-scale" (+ (js/Math.random) 0.5)
-          "--bubble-size-scale" (+ (js/Math.random) 0.5)
-          "--bubble-width-scale" (* (- (js/Math.random) 0.5) 2)
-          "--bubble-delay" (* (js/Math.random) 4.0)}}
-        [:i.twa.twa-blue-circle.twa-2x]]])]])
+  (let [p (r/atom [])]
+    (fn []
+      [:div
+       [:div.title "Bubbles"]
+       [:div.card
+        {:on-click #(swap! p conj {:key (str (js/Math.random))
+                                   :pos (int (* (- (js/Math.random) 0.5) 200))
+                                   :style
+                                   {"--bubble-height-scale" (+ (js/Math.random) 0.5)
+                                    "--bubble-size-scale" (+ (js/Math.random) 0.5)
+                                    "--bubble-width-scale" (* (- (js/Math.random) 0.5) 2)}})}
+        (for [s @p]
+          [:div (move (s :pos) 0 {:key (s :key)})
+           [:div.juicy__bubble
+            (assoc s :on-animation-end #(swap! p (fn [ps] (remove (partial = s) ps))))
+            [:i.twa.twa-blue-circle.twa-2x]]])]])))
 
 (defn component-smoke []
   [:div

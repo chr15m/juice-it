@@ -463,10 +463,10 @@
   opacity: 0;
   animation-duration: calc((var(--bubble-size-scale) + 2) * 2s);
   animation-delay: calc(1s * var(--bubble-delay));
-  animation-iteration-count: infinite;
   animation-name: bubble-rise;
   transform-origin: center center;
   animation-timing-function: linear;
+  animation-repeat: 1;
 }
 
 .juicy__bubble > * {
