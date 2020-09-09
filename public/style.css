@@ -1,12 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Cutive+Mono&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.5em;
+}
+
 html, body, #app, #loading {
   height: 100%;
-  font-size: 16px !important;
   position: absolute;
   width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 0.25em;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
+  font-family: 'Lobster', cursive;
+}
+
+@media (max-width: 600px) {
+ body {
+ }
+}
+
+
+h2, h4 {
+  margin-top: 1em;
+  text-align: center;
+}
+
+h4 {
+  margin-bottom: 4em;
+}
+
+p {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1em;
+  font-weight: 800;
 }
 
 #loading, .card, .card * {
@@ -21,6 +55,7 @@ html, body, #app, #loading {
   max-width: 100%;
   background-color: #214251;
   margin: 1em auto;
+  font-size: 16px !important;
 }
 
 .card * {
@@ -33,7 +68,7 @@ html, body, #app, #loading {
   padding: 0px 0.5em;
   width: 480px;
   position: relative;
-  top: 3em;
+  top: 2.5em;
   color: white;
 }
 
@@ -53,4 +88,10 @@ input[type="range"] {
 
 .shadow {
   float: left;
+}
+
+footer {
+  font-size: 1em;
+  text-align: center;
+  margin-top: 3em;
 }

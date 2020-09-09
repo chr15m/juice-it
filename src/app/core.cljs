@@ -226,16 +226,24 @@
                          :class (str "twa-" p)
                          :ref (partial preload-twa-emoji preloads p)}])]
       [:div
+       [:h2 "Juice-it CSS " [:i.twa.twa-tropical-drink]]
+       [:h4 "A collection of juicy game-feel animations in CSS."]
+       [:p "Use these CSS animations to add game-like interactivity to your web apps or, you know, " [:strong "a game."] " " [:i.twa.twa-grinning-face]]
+       [component-particles]
        [component-bubble]
        [component-smoke]
        [component-bounce-tiles]
        [component-attack]
-       [component-particles]
        [component-float-tiles]
-       [component-screenshake]
        [component-dash]
        [component-shake]
-       [component-bounce]])))
+       [component-bounce]
+       [component-screenshake]
+       [:footer
+        [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://twitter.com/mccrmx"} "@mccrmx"] " and "
+         [:a {:href "https://twitter.com/infinitelives1"} "@infinitelives1"]]
+        [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]
+        [:p [:a {:href "https://infinitelives.github.io/"} "Sign up for updates to find out when we make new games & tech"] "."]]])))
 
 (defn main []
   (print "hi"))
