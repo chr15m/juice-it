@@ -81,6 +81,48 @@
   }
 }
 
+/*** coin up ***/
+
+.juicy__coinup {
+  animation: coinup 1.5s forwards;
+  transform-origin: center bottom;
+}
+
+@keyframes coinup {
+  from,
+  40%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  20%,
+  23% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -200px, 0) scaleY(1.1);
+  }
+
+  55% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -100px, 0) scaleY(1.05);
+  }
+
+  70% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  85% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -50px, 0) scaleY(1.02);
+  }
+  
+  100% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /*** shake ***/
 
 /* https://www.w3schools.com/howto/howto_css_shake_image.asp */
@@ -428,6 +470,7 @@
   animation-delay: calc(3s * var(--smoke-delay));
   animation-iteration-count: infinite;
   animation-name: smokepuff-rise;
+  animation-timing-function: linear;
   transform-origin: center bottom;
 }
 
@@ -436,13 +479,13 @@
   animation-delay: calc(3s * var(--smoke-delay));
   animation-iteration-count: infinite;
   animation-name: smokepuff;
-  transition-timing-function: linear;
+  animation-timing-function: ease;
 }
 
 @keyframes smokepuff {
-  0% { opacity: 0; transition-timing-function: ease-out; transform: translateX(0px) scale(0); }
-  50% { opacity: 1; transition-timing-function: ease-in; transform: translateX(calc(-50px * var(--smoke-width-scale))) scale(var(--smoke-size-scale)); }
-  100% { opacity: 0; transform: translateX(calc(-30px * var(--smoke-width-scale))) scale(cal(0.25 * var(--smoke-size-scale))); }
+  0% { opacity: 0; transform: translateX(0px) scale(0); }
+  50% { opacity: 1; transform: translateX(calc(-50px * var(--smoke-width-scale))) scale(var(--smoke-size-scale)); }
+  100% { opacity: 0; transform: translateX(calc(-50px * var(--smoke-width-scale))) scale(var(--smoke-size-scale)); }
 }
 
 @keyframes smokepuff-rise {
@@ -478,13 +521,59 @@
 }
 
 @keyframes bubble-rise {
-  0% { opacity: 0.5; transform: scale(calc(1 * var(--bubble-size-scale))); }
-  100% { opacity: 0.5; transform: translate(calc(-50px * var(--bubble-width-scale)), calc(-100px * var(--bubble-height-scale))) scale(calc(1 * var(--bubble-size-scale))); }
+  0% { opacity: 0.5; transform: scale(calc(1.5 * var(--bubble-size-scale))); }
+  100% { opacity: 0.5; transform: translate(calc(-50px * var(--bubble-width-scale)), calc(-100px * var(--bubble-height-scale))) scale(calc(1.5 * var(--bubble-size-scale))); }
 }
 
 @keyframes bubble-wobble {
   0% { transform: scale(1.0, 1.1); }
   50% { transform: scale(1.1, 1.0); }
   100% { transform: scale(1.0, 1.1); }
+}
+
+/*** title sweep in ***/
+
+.juicy__titlesweep {
+  animation: 2s sweepin forwards;
+}
+
+/* https://github.com/animate-css/animate.css/blob/master/animate.css */
+@keyframes sweepin {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+/*** title spin in ***/
+
+.juicy__titlespin {
+  animation: 1s spinin forwards linear;
+}
+
+@keyframes spinin {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease;
+    transform: scale(0.01) rotate(0deg);
+  }
+
+  95% {
+    opacity: 1;
+    animation-timing-function: linear;
+    transform: scale(1.5) rotate(720deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(720deg);
+  }
 }
 
