@@ -22,12 +22,6 @@ html, body, #app, #loading {
   font-family: 'Lobster', cursive;
 }
 
-@media (max-width: 600px) {
- body {
- }
-}
-
-
 h2, h4 {
   margin-top: 1em;
   text-align: center;
@@ -60,6 +54,11 @@ p {
 
 .card * {
   position: absolute;
+}
+
+.card h1 {
+  color: #eaeaea;
+  font-size: 3.5em;
 }
 
 .title {

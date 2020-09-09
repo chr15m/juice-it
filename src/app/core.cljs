@@ -111,7 +111,14 @@
            {:class "juicy__coinup"
             :on-animation-end #(reset! on false)}])]])))
 
-(defn component-title-sweep-in [])
+(defn component-title-sweep-in []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.title "Title sweep"]
+       [:div.card {:on-click #(swap! on not)}
+        (when @on
+          [:h1 {:class "juicy__sweepin"} "Game Title!"])]])))
 
 (defn component-title-spin-in [])
 
@@ -251,9 +258,9 @@
        [component-smoke]
        [component-shake]
        [component-bounce-tiles]
-       [component-coin-up]
        [component-title-sweep-in]
        [component-title-spin-in]
+       [component-coin-up]
        [component-attack]
        [component-float-tiles]
        [component-dash]
