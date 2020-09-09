@@ -6,7 +6,7 @@
   (r/atom
     {:preloads ["cloud"
                 "elf-dark-skin-tone"
-                "deer"
+                "ogre"
                 "collision"
                 "star"
                 "fire"
@@ -115,7 +115,7 @@
             (assoc i :on-animation-end #(swap! p (fn [ps] (remove (partial = i) ps))))
             [:i.twa.twa-collision.twa-5x]])]
         [:div (move -50 0) [:i.twa.twa-elf-dark-skin-tone.twa-5x {:class (when @on "juicy__attack-initiate")}]]
-        [:div (move 50 0) [:i.twa.twa-deer.twa-5x {:class (when @on "juicy__attack-receive")}]]]])))
+        [:div (move 50 0) [:i.twa.twa-ogre.twa-5x {:class (when @on "juicy__attack-receive")}]]]])))
 
 (defn component-particles []
   (let [p (r/atom [])
