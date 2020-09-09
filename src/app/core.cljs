@@ -246,8 +246,10 @@
        [:h4 "A collection of juicy game-feel animations in CSS."]
        [:p "Use these CSS animations to add game-like interactivity to your web apps or, you know, " [:strong "a game."] " " [:i.twa.twa-grinning-face]]
        [component-particles]
+       [component-bounce]
        [component-bubble]
        [component-smoke]
+       [component-shake]
        [component-bounce-tiles]
        [component-coin-up]
        [component-title-sweep-in]
@@ -255,8 +257,6 @@
        [component-attack]
        [component-float-tiles]
        [component-dash]
-       [component-shake]
-       [component-bounce]
        [component-screenshake]
        [:footer
         [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://twitter.com/mccrmx"} "@mccrmx"] " and "
