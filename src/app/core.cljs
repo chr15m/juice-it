@@ -118,9 +118,16 @@
        [:div.title "Title sweep"]
        [:div.card {:on-click #(swap! on not)}
         (when @on
-          [:h1 {:class "juicy__sweepin"} "Game Title!"])]])))
+          [:h1 {:class "juicy__titlesweep"} "Game Title!"])]])))
 
-(defn component-title-spin-in [])
+(defn component-title-spin-in []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.title "Title spin"]
+       [:div.card {:on-click #(swap! on not)}
+        (when @on
+          [:h1 {:class "juicy__titlespin"} "Game Title!"])]])))
 
 (defn component-attack []
   (let [on (r/atom false)

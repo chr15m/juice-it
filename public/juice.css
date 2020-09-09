@@ -532,7 +532,7 @@
 
 /*** title sweep in ***/
 
-.juicy__sweepin {
+.juicy__titlesweep {
   animation: 2s sweepin forwards;
 }
 
@@ -548,6 +548,31 @@
     opacity: 1;
     transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+/*** title spin in ***/
+
+.juicy__titlespin {
+  animation: 1s spinin forwards linear;
+}
+
+@keyframes spinin {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease;
+    transform: scale(0.01) rotate(0deg);
+  }
+
+  95% {
+    opacity: 1;
+    animation-timing-function: linear;
+    transform: scale(1.5) rotate(720deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(720deg);
   }
 }
 
