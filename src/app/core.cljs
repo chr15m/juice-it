@@ -9,6 +9,7 @@
                 "ogre"
                 "collision"
                 "star"
+                "coin"
                 "fire"
                 "blue-circle"
                 "man-mage-dark-skin-tone"
@@ -98,6 +99,21 @@
               [:i.twa.twa-white-large-square.twa-5x
                {:class (when @on "juicy__bounce")
                 :style {:animation-delay (str (int (* (js/Math.random) 150)) "ms")}}]]))]]])))
+
+(defn component-coin-up []
+  (let [on (r/atom false)]
+    (fn []
+      [:div
+       [:div.title "Coin up"]
+       [:div.card {:on-click (fn [ev] (swap! on not))}
+        (when @on
+          [:i.twa.twa-coin.twa-5x
+           {:class "juicy__coinup"
+            :on-animation-end #(reset! on false)}])]])))
+
+(defn component-title-sweep-in [])
+
+(defn component-title-spin-in [])
 
 (defn component-attack []
   (let [on (r/atom false)
@@ -233,6 +249,9 @@
        [component-bubble]
        [component-smoke]
        [component-bounce-tiles]
+       [component-coin-up]
+       [component-title-sweep-in]
+       [component-title-spin-in]
        [component-attack]
        [component-float-tiles]
        [component-dash]
