@@ -284,10 +284,8 @@
        [component-dash]
        [component-screenshake]
        [:footer
-        [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://twitter.com/mccrmx"} "@mccrmx"] " and "
-         [:a {:href "https://twitter.com/infinitelives1"} "@infinitelives1"]]
-        [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]
-        [:p [:a {:href "https://infinitelives.github.io/"} "Sign up for updates to find out when we make new games & tech"] "."]]])))
+        [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://mccormick.cx/"} "Chris McCormick"] " (" [:a {:href "https://twitter.com/mccrmx"} "@mccrmx"] ")"]
+        [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]]])))
 
 (defn main []
   (print "hi"))
