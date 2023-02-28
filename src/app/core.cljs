@@ -288,9 +288,7 @@
         [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]]])))
 
 (defn main []
-  (print "hi"))
-
-(js/setTimeout
-  #(rdom/render [component-main state]
-                (js/document.getElementById "app"))
-  500)
+  (js/setTimeout
+    #(rdom/render [component-main state]
+                  (js/document.getElementById "app"))
+    500))
