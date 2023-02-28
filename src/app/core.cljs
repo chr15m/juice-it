@@ -43,7 +43,7 @@
             (str "translate(" x "px," y "px)")))
 
 (defn make-particle-attributes [n]
-  (for [x (range n)]
+  (for [_ (range n)]
     {:key (js/Math.random)
      :style {"--particle-jump" (+ (* (js/Math.random) 2) 0.5)
              "--particle-direction" (* (- (js/Math.random) 0.5) 2)
