@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-size: 1.5em;
-}
-
 html, body, #app, #loading {
   height: 100%;
   position: absolute;
@@ -20,6 +16,10 @@ html, body, #app, #loading {
   right: 0px;
   bottom: 0px;
   font-family: 'Lobster', cursive;
+}
+
+body {
+  font-size: 1.5em;
 }
 
 h2, h4 {
@@ -69,6 +69,15 @@ p {
   position: relative;
   top: 2.5em;
   color: white;
+}
+
+.link {
+  position: relative;
+  color: white;
+  top: 2.5em;
+  width: 480px;
+  text-align: right;
+  display: none;
 }
 
 input[type="range"] {
