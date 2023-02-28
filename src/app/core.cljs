@@ -28,9 +28,14 @@
                   (aget "background-image")
                   (.replace "url(\"" "")
                   (.replace "\")" ""))
-          i (js/Image.)]
-      (aset i "onload" #(swap! preloads (fn [ps] (remove (partial = p) ps))))
-      (aset i "src" url))))
+          i (js/Image.)
+          rm #(swap! preloads (fn [ps] (remove (partial = p) ps)))]
+      (if url
+        (do
+          (aset i "onload" rm)
+          (aset i "onerror" rm)
+          (aset i "src" url))
+        (rm)))))
 
 (defn move [x y & [attrs]]
   (assoc-in (or attrs {})
