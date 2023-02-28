@@ -19,7 +19,7 @@
                 "dashing-away"
                 "grinning-face-with-sweat"
                 "zany-face"
-                "dizzy-face"]}))
+                "knocked-out-face"]}))
 
 (defn preload-twa-emoji [preloads p el]
   (when el
@@ -226,7 +226,7 @@
           1 [:i.twa.twa-grinning-face-with-sweat.twa-5x {:class "juicy__shake__1"}]
           2 [:i.twa.twa-zany-face.twa-5x {:class "juicy__shake__2"}]
           3 [:i.twa.twa-grimacing-face.twa-5x {:class "juicy__shake__3"}]
-          4 [:i.twa.twa-dizzy-face.twa-5x {:class "juicy__shake__4"}])]])))
+          4 [:i.twa.twa-knocked-out-face.twa-5x {:class "juicy__shake__4"}])]])))
 
 (defn component-bounce []
   (let [on (r/atom false)]
