@@ -59,14 +59,20 @@
       [:div
        [:div.title "Bubbles"]
        [:div.card
-        {:on-click #(swap! p conj {:key (str (js/Math.random))
-                                   :pos (int (* (- (js/Math.random) 0.5) 200))
-                                   :style
-                                   {"--bubble-height-scale" (+ (js/Math.random) 0.5)
-                                    "--bubble-size-scale" (+ (js/Math.random) 0.5)
-                                    "--bubble-width-scale" (* (- (js/Math.random) 0.5) 2)}})}
+        {:on-click (fn [ev]
+                     (let [bounds (-> ev .-currentTarget .getBoundingClientRect)
+                           c [(/ (+ (.-right bounds) (.-left bounds)) 2)
+                              (/ (+ (.-top bounds) (.-bottom bounds)) 2)]
+                           x (- (.-clientX ev) (first c))
+                           y (- (.-clientY ev) (second c))]
+                       (swap! p conj {:key (str (js/Math.random))
+                                      :pos [x y]
+                                      :style
+                                      {"--bubble-height-scale" (+ (js/Math.random) 0.5)
+                                       "--bubble-size-scale" (+ (js/Math.random) 0.5)
+                                       "--bubble-width-scale" (* (- (js/Math.random) 0.5) 2)}})))}
         (for [s @p]
-          [:div (move (s :pos) 0 {:key (s :key)})
+          [:div (move (-> s :pos first) (-> s :pos second) {:key (s :key)})
            [:div.juicy__bubble
             (assoc s :on-animation-end #(swap! p (fn [ps] (remove (partial = s) ps))))
             [:i.twa.twa-blue-circle.twa-2x]]])]])))
