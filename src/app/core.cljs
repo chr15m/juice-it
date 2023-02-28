@@ -269,7 +269,7 @@
       [:div
        [:h2 "Juice-it CSS " [:i.twa.twa-tropical-drink]]
        [:h4 "A collection of juicy game-feel animations in CSS."]
-       [:p "Use these CSS animations to add game-like interactivity to your web apps or, you know, " [:strong "a game."] " " [:i.twa.twa-grinning-face]]
+       [:p "Use these CSS animations to add game-like interactivity to your web apps. Or " [:strong "a game!"] " " [:i.twa.twa-grinning-face]]
        [component-particles]
        [component-bounce]
        [component-bubble]
