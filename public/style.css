@@ -50,6 +50,7 @@ p {
   background-color: #214251;
   margin: 1em auto;
   font-size: 16px !important;
+  user-select: none;
 }
 
 .card * {
