@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Courier+Prime&display=swap');
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  font-size: 1.5em;
 }
 
 html, body, #app, #loading {
@@ -22,6 +18,10 @@ html, body, #app, #loading {
   font-family: 'Lobster', cursive;
 }
 
+body {
+  font-size: 1.5em;
+}
+
 h2, h4 {
   margin-top: 1em;
   text-align: center;
@@ -32,7 +32,7 @@ h4 {
 }
 
 p {
-  font-family: 'Cutive Mono', monospace;
+  font-family: 'Courier Prime', monospace;
   font-size: 1em;
   font-weight: 800;
 }
@@ -63,12 +63,20 @@ p {
 }
 
 .title {
-  max-width: 100%;
-  margin: 0px auto;
-  padding: 0px 0.5em;
-  width: 480px;
-  position: relative;
-  top: 2.5em;
+  color: white;
+}
+
+span.about {
+  width: 440px;
+  display: flex;
+  justify-content: space-between;
+  margin: 1em auto;
+  margin-top: 2em;
+  margin-bottom: -2.5em;
+}
+
+span.about a {
+  font-family: "Courier Prime", monospace;
   color: white;
 }
 

@@ -57,7 +57,10 @@
   (let [p (r/atom [])]
     (fn []
       [:div
-       [:div.title "Bubbles"]
+       [:span.about
+        [:div.title "Bubbles"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L496-L532"} "css"]]
        [:div.card
         {:on-click (fn [ev]
                      (let [bounds (-> ev .-currentTarget .getBoundingClientRect)
@@ -79,7 +82,10 @@
 
 (defn component-smoke []
   [:div
-   [:div.title "Smoke"]
+   [:span.about
+    [:div.title "Smoke"]
+    [:a.link {:target "_blank"
+              :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L458-L494"} "css"]]
    [:div.card
     (for [s (range 10)]
       [:div.juicy__smokepuff {:key s
@@ -96,15 +102,18 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Bounce tiles"]
-       [:div.card {:on-click (fn [ev]
+       [:span.about
+        [:div.title "Bounce tiles"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L9-L82"} "css"]]
+       [:div.card {:on-click (fn []
                                (swap! on not)
                                (js/setTimeout
                                  #(reset! on false)
                                  1200))}
         [:span {:style {:transform "scaleY(0.66)"}}
          (doall
-         (for [x (range 3)
+           (for [x (range 3)
                  y (range 3)]
              [:div (move (- (* x 100) 100) (- (* y 100) 100) {:key [x y]})
               [:i.twa.twa-white-large-square.twa-5x
@@ -115,8 +124,11 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Coin up"]
-       [:div.card {:on-click (fn [ev] (swap! on not))}
+       [:span.about
+        [:div.title "Coin up"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L84-L124"} "css"]]
+       [:div.card {:on-click (fn [] (swap! on not))}
         (when @on
           [:i.twa.twa-coin.twa-5x
            {:class "juicy__coinup"
@@ -126,7 +138,10 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Title sweep"]
+       [:span.about
+        [:div.title "Title sweep"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L534-L553"} "css"]]
        [:div.card {:on-click #(swap! on not)}
         (when @on
           [:h1 {:class "juicy__titlesweep"} "Game Title!"])]])))
@@ -135,7 +150,10 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Title spin"]
+       [:span.about
+        [:div.title "Title spin"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L555-L578"} "css"]]
        [:div.card {:on-click #(swap! on not)}
         (when @on
           [:h1 {:class "juicy__titlespin"} "Game Title!"])]])))
@@ -145,8 +163,11 @@
         p (r/atom [])]
     (fn []
       [:div
-       [:div.title "Attack"]
-       [:div.card {:on-click (fn [ev]
+       [:span.about
+        [:div.title "Attack"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L400-L456"} "css"]]
+       [:div.card {:on-click (fn []
                                (swap! on not)
                                (js/setTimeout #(swap! p concat (make-particle-attributes 10)) 300)
                                (js/setTimeout #(swap! on not) 1500))}
@@ -163,7 +184,10 @@
         q 20]
     (fn []
       [:div
-       [:div.title "Particles" (when (not-empty @p) (str " (" (count @p) ")"))]
+       [:span.about
+        [:div.title "Particles" (when (not-empty @p) (str " (" (count @p) ")"))]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L342-L398"} "css"]]
        [:div.card
         {:on-click
          #(swap! p concat (make-particle-attributes q))}
@@ -178,7 +202,10 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Bubble up tiles"]
+       [:span.about
+        [:div.title "Bubble up tiles"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L279-L317"} "css"]]
        [:div.card {:on-click #(swap! on not)}
         [:span {:style {:transform "scaleY(0.66)"}}
          (when @on
@@ -193,14 +220,17 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Screenshake"]
+       [:span.about
+        [:div.title "Screenshake"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L234-L277"} "css"]]
        [:div.card {:on-click #(reset! on true)
                    :class (when @on "juicy__screenshake")
                    :on-animation-end #(reset! on false)}
         [:svg.shadow (move -100 43 {:width 100 :height 100})
-           [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5}]]
+         [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5}]]
         [:svg.shadow (move 100 43 {:width 100 :height 100})
-           [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5}]]
+         [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5}]]
         (if @on
           [:span
            [:i.twa.twa-grimacing-face.twa-5x (move -100 0)]
@@ -213,7 +243,10 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Dash"]
+       [:span.about
+        [:div.title "Dash"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L205-L232"} "css"]]
        [:div.card {:on-click #(reset! on true)}
         (when (not @on)
           [:svg.shadow (move 0 43 {:width 100 :height 100})
@@ -227,7 +260,10 @@
   (let [v (r/atom 0)]
     (fn []
       [:div
-       [:div.title "Shaker"]
+       [:span.about
+        [:div.title "Shaker"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L129-L203"} "css"]]
        [:div.card {:on-click #(swap! v (fn [o] (mod (inc o) 5)))}
         (when (< @v 3)
           [:svg.shadow (move 0 43 {:width 100 :height 100})
@@ -243,7 +279,10 @@
   (let [on (r/atom false)]
     (fn []
       [:div
-       [:div.title "Bounce"]
+       [:span.about
+        [:div.title "Bounce"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L9-L82"} "css"]]
        [:div.card
         {:on-click #(reset! on true)}
         [:svg.shadow (move 0 43 {:width 100 :height 100})
