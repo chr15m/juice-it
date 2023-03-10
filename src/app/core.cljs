@@ -239,6 +239,32 @@
            [:i.twa.twa-grinning-face.twa-5x (move -100 0)]
            [:i.twa.twa-grinning-face-with-smiling-eyes.twa-5x (move 100 0)]])]])))
 
+(defn component-walk []
+  (let [pos (r/atom {:x 0 :y 0 :walking false})]
+    (fn []
+      [:div
+       [:span.about
+        [:div.title "Walk"]
+        [:a.link {:target "_blank"
+                  :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L580-L611"} "css"]]
+       [:div.card
+        {:on-click (fn [ev]
+                     (let [bounds (-> ev .-currentTarget .getBoundingClientRect)
+                           c [(/ (+ (.-right bounds) (.-left bounds)) 2)
+                              (/ (+ (.-top bounds) (.-bottom bounds)) 2)]
+                           x (- (.-clientX ev) (first c))
+                           y (- (.-clientY ev) (second c))
+                           distance (js/Math.sqrt
+                                      (+ (js/Math.pow (- x (:x @pos)) 2)
+                                         (js/Math.pow (- y (:y @pos)) 2)))
+                           duration (/ distance 100)]
+                       (swap! pos assoc :x x :y y :duration duration :walking true)))}
+        [:div.juicy__drift (merge (move (:x @pos) (:y @pos)
+                                        {:style {"--drift-duration" (str (:duration @pos) "s")}
+                                         :on-transition-end (fn [_ev] (js/console.log "transition end") (swap! pos dissoc :walking))}))
+         [:div (when (:walking @pos) {:class "juicy__walk"})
+          [:i.twa.twa-elf.twa-2x]]]]])))
+
 (defn component-dash []
   (let [on (r/atom false)]
     (fn []
@@ -320,6 +346,7 @@
        [component-coin-up]
        [component-attack]
        [component-float-tiles]
+       [component-walk]
        [component-dash]
        [component-screenshake]
        [:footer
