@@ -5,21 +5,16 @@
 }
 
 html, body, #app, #loading {
-  height: 100%;
-  position: absolute;
   width: 100%;
   max-width: 600px;
   margin: auto;
   padding: 0.25em;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
   font-family: 'Lobster', cursive;
 }
 
 body {
   font-size: 1.5em;
+  padding-bottom: 2em;
 }
 
 h2, h4 {
@@ -82,6 +77,15 @@ span.about a {
 
 input[type="range"] {
   width: 100%;
+}
+
+#loading {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 #loading i {

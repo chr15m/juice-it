@@ -577,3 +577,35 @@
   }
 }
 
+/*** walk ***/
+
+:root {
+  --drift-duration: 1s;
+}
+
+.juicy__drift {
+  transition-duration: var(--drift-duration);
+  transition-timing-function: linear;
+  transition-property: transform;
+}
+
+.juicy__walk {
+  animation-duration: 0.6s;
+  animation-name: walk;
+  animation-iteration-count: infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes walk {
+  0%, 50%, 100% {
+    transform: rotate(0deg) translateY(-10px);
+  }
+
+  25% {
+    transform: rotate(10deg) translateY(0px);
+  }
+
+  75% {
+    transform: rotate(-10deg) translateY(0px);
+  }
+}
