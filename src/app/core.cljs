@@ -261,7 +261,7 @@
                        (swap! pos assoc :x x :y y :duration duration :walking true)))}
         [:div.juicy__drift (merge (move (:x @pos) (:y @pos)
                                         {:style {"--drift-duration" (str (:duration @pos) "s")}
-                                         :on-transition-end (fn [_ev] (js/console.log "transition end") (swap! pos dissoc :walking))}))
+                                         :on-transition-end #(swap! pos dissoc :walking)}))
          [:div (when (:walking @pos) {:class "juicy__walk"})
           [:i.twa.twa-elf.twa-2x]]]]])))
 
