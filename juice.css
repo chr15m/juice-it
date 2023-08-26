@@ -609,3 +609,39 @@
     transform: rotate(-10deg) translateY(0px);
   }
 }
+
+/*** hover ***/
+
+.juicy__hover {
+  animation-duration: 1s;
+  animation-name: hover;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease-in-out;
+}
+
+@keyframes hover {
+  0%, 100% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.juicy__hover__shadow {
+  animation-duration: 1s;
+  animation-name: hover-shadow;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease-in-out;
+}
+
+@keyframes hover-shadow {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+}
