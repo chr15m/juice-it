@@ -134,6 +134,18 @@
            {:class "juicy__coinup"
             :on-animation-end #(reset! on false)}])]])))
 
+(defn component-hover []
+  [:div
+   [:span.about
+    [:div.title "Hover"]
+    [:a.link {:target "_blank"
+              :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L613-L647"} "css"]]
+   [:div.card
+    [:div (move 10 43 {})
+     [:svg.shadow {:width 100 :height 100 :class "juicy__hover__shadow"}
+      [:ellipse {:cx 50 :cy 50 :ry 5 :rx 30 :fill "#888" :opacity 0.5}]]]
+    [:i.twa.twa-ghost.twa-5x {:class "juicy__hover"}]]])
+
 (defn component-title-sweep-in []
   (let [on (r/atom false)]
     (fn []
@@ -344,6 +356,7 @@
        [component-title-sweep-in]
        [component-title-spin-in]
        [component-coin-up]
+       [component-hover]
        [component-attack]
        [component-float-tiles]
        [component-walk]
