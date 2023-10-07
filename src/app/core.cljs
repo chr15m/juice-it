@@ -363,7 +363,7 @@
        [component-dash]
        [component-screenshake]
        [:footer
-        [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://mccormick.cx/"} "Chris McCormick"] " (" [:a {:href "https://twitter.com/mccrmx"} "@mccrmx"] ")"]
+        [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://mccormick.cx/"} "Chris McCormick"]]
         [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]]])))
 
 (defn main []
