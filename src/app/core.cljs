@@ -7,6 +7,7 @@
     {:preloads ["cloud"
                 "elf-dark-skin-tone"
                 "ogre"
+                "troll"
                 "collision"
                 "star"
                 "coin"
@@ -275,7 +276,17 @@
                                         {:style {"--drift-duration" (str (:duration @pos) "s")}
                                          :on-transition-end #(swap! pos dissoc :walking)}))
          [:div (when (:walking @pos) {:class "juicy__walk"})
-          [:i.twa.twa-elf.twa-2x]]]]])))
+          [:i.twa.twa-troll.twa-4x]]]]])))
+
+(defn component-idle []
+  [:div
+   [:span.about
+    [:div.title "Idle"]
+    [:a.link {:target "_blank"
+              :href "https://github.com/chr15m/juice-it/blob/master/public/juice.css#L649-L670"} "css"]]
+   [:div.card
+    [:div {:class "juicy__idle"}
+     [:i.twa.twa-elf.twa-4x]]]])
 
 (defn component-dash []
   (let [on (r/atom false)]
@@ -360,6 +371,7 @@
        [component-attack]
        [component-float-tiles]
        [component-walk]
+       [component-idle]
        [component-dash]
        [component-screenshake]
        [:footer
