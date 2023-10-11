@@ -63,6 +63,7 @@ p {
 
 span.about {
   width: 440px;
+  max-width: 95%;
   display: flex;
   justify-content: space-between;
   margin: 1em auto;
@@ -73,6 +74,10 @@ span.about {
 span.about a {
   font-family: "Courier Prime", monospace;
   color: white;
+}
+
+p.source-link {
+  text-align: center;
 }
 
 input[type="range"] {
