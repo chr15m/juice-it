@@ -76,6 +76,10 @@ span.about a {
   color: white;
 }
 
+p.source-link {
+  text-align: center;
+}
+
 input[type="range"] {
   width: 100%;
 }

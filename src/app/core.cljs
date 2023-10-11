@@ -358,6 +358,7 @@
        [:h2 "Juice-it CSS " [:i.twa.twa-tropical-drink]]
        [:h4 "A collection of juicy game-feel animations in CSS."]
        [:p "Use these CSS animations to add game-like interactivity to your web apps. Or " [:strong "a game!"] " " [:i.twa.twa-grinning-face]]
+       [:p.source-link "(" [:a {:href "https://github.com/chr15m/juice-it"} "source code"] ")"]
        [component-particles]
        [component-bounce]
        [component-bubble]
@@ -376,7 +377,8 @@
        [component-screenshake]
        [:footer
         [:p "Made with " [:i.twa.twa-robot] " by " [:a {:href "https://mccormick.cx/"} "Chris McCormick"]]
-        [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]]])))
+        [:p "Inspired by " [:a {:href "https://www.youtube.com/watch?v=Fy0aCDmgnxg"} "Juice It or Lose It"] "."]
+        [:p [:a {:href "https://github.com/chr15m/juice-it"} "Source code"] "."]]])))
 
 (defn main []
   (js/setTimeout
